@@ -6,9 +6,16 @@ using std::endl;
 #define tab "\t"
 
 void FillRand(int arr[], const int n);
-void Print(const int arr[], const int n);
+void FillRand(double arr[], const int n);
+
+void Print(int arr[], const int n);
+void Print(double arr[], const int n);
+
 void Sort(int arr[], const int n);
+
 int Sum(int arr[], const int n);
+double Sum(double arr[], const int n);
+
 double Avg(int arr[], const int n);
 int MinValueIn(int arr[], const int n);
 int MaxValueIn(int arr[], const int n);
@@ -29,12 +36,20 @@ void main()
 	cout << "Минимальное значение: " << MinValueIn(arr, n) << endl;
 	cout << "Максимальное значение: " << MaxValueIn(arr, n) << endl;
 	int number_of_shifts;
-	cout << "Введите количество сдвигов влево: "; cin >> number_of_shifts;
-	ShiftLeft(arr, n, number_of_shifts);
-	Print(arr, n);
-	cout << "Введите количество сдвигов вправо: "; cin >> number_of_shifts;
-	ShiftRight(arr, n, number_of_shifts);
-	Print(arr, n);
+	//cout << "Введите количество сдвигов влево: "; cin >> number_of_shifts;
+	//ShiftLeft(arr, n, number_of_shifts);
+	//Print(arr, n);
+	//cout << "Введите количество сдвигов вправо: "; cin >> number_of_shifts;
+	//ShiftRight(arr, n, number_of_shifts);
+	//Print(arr, n);
+	const int SIZE = 8;
+	double brr[SIZE];
+	FillRand(brr, SIZE);
+	Print(brr, SIZE);
+	cout << "Сумма элементов массива: " << Sum(brr, SIZE) << endl;
+	//cout << "Средне-арифметическое элементов массива: " << Avg(brr, SIZE) << endl;
+	//cout << "Минимальное значение в массиве: " << MinValueIn(brr, SIZE) << endl;
+	//cout << "Максимальное значение в массиве: " << MaxValueIn(brr, SIZE) << endl;
 }
 
 void FillRand(int arr[], const int n)
@@ -43,8 +58,23 @@ void FillRand(int arr[], const int n)
 	{
 		arr[i] = rand() % 100;
 	}
+
+}void FillRand(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = rand() % 100;
+	}
 }
-void Print(const int arr[], const int n)
+void Print(int arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;
+
+}void Print(double arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -75,7 +105,17 @@ int Sum(int arr[], const int n)
 		sum += arr[i];
 	}
 	return sum;
+
+}double Sum(double arr[], const int n)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
 }
+
 double Avg(int arr[], const int n)
 {
 	return (double)Sum(arr,n)/n;
