@@ -216,7 +216,7 @@ int MinValueIn(int arr[], const int n)
 }
 double MinValueIn(double arr[], const int n)
 {
-	int min = arr[0];
+	double min = arr[0];
 	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] < min)min = arr[i];
@@ -244,7 +244,7 @@ int MaxValueIn(int arr[], const int n)
 }
 double MaxValueIn(double arr[], const int n)
 {
-	int max = arr[0];
+	double max = arr[0];
 	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] > max)max = arr[i];
