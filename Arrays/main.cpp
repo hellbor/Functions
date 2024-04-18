@@ -141,7 +141,7 @@ void Sort(double arr[], const int n)
 		{
 			if (arr[j] < arr[i])
 			{
-				int buffer = arr[i];
+				double buffer = arr[i];
 				arr[i] = arr[j];
 				arr[j] = buffer;
 			}
@@ -202,7 +202,7 @@ double Avg(double arr[], const int n)
 }
 char Avg(char arr[], const int n)
 {
-	return (double)Sum(arr,n)/n;
+	return (char)Sum(arr,n)/n;
 }
 
 int MinValueIn(int arr[], const int n)
@@ -277,7 +277,7 @@ void ShiftLeft(double arr[], const int n, int number_of_shifts)
 {
 	for (int i = 0; i < number_of_shifts; i++)
 	{
-		int buffer = arr[0];
+		double buffer = arr[0];
 		for (int i = 1; i < n; i++)
 		{
 			arr[i - 1] = arr[i];
