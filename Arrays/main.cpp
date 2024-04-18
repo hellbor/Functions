@@ -4,14 +4,20 @@ using std::cout;
 using std::endl;
 
 #define tab "\t"
+#define delimiter "\n-------------------------------------\n"
+
+const int ROWS = 3;
+const int COLS = 4;
 
 void FillRand(int arr[], const int n);
 void FillRand(double arr[], const int n);
 void FillRand(char arr[], const int n);
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void Print(int arr[], const int n);
 void Print(double arr[], const int n);
 void Print(char arr[], const int n);
+void Print(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void Sort(int arr[], const int n);
 void Sort(double arr[], const int n);
@@ -19,11 +25,13 @@ void Sort(char arr[], const int n);
 
 int Sum(int arr[], const int n);
 double Sum(double arr[], const int n);
-char Sum(char arr[], const int n);
+int Sum(char arr[], const int n);
+int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 double Avg(int arr[], const int n);
 double Avg(double arr[], const int n);
-char Avg(char arr[], const int n);
+double Avg(char arr[], const int n);
+double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int MinValueIn(int arr[], const int n);
 double MinValueIn(double arr[], const int n);
@@ -44,16 +52,18 @@ void ShiftRight(char arr[], const int n, int number_of_shifts);
 void main()
 {
 	setlocale(LC_ALL, "");
-	const int n = 5;
-	int arr[n];
-	FillRand(arr, n);
-	Print(arr, n);
-	Sort(arr, n);
-	Print(arr, n);
-	cout << "Сумма элементов массива: " << Sum(arr, n) << endl;
-	cout <<"Среднее арифметическое: " << Avg(arr, n)<<endl;
-	cout << "Минимальное значение: " << MinValueIn(arr, n) << endl;
-	cout << "Максимальное значение: " << MaxValueIn(arr, n) << endl;
+	const int I_SIZE = 5;
+	int i_arr[I_SIZE];
+	FillRand(i_arr, I_SIZE);
+	Print(i_arr, I_SIZE);
+	Sort(i_arr, I_SIZE);
+	Print(i_arr, I_SIZE);
+	cout << delimiter << endl;
+	cout << "Сумма элементов массива: " << Sum(i_arr, I_SIZE) << endl;
+	cout <<"Среднее арифметическое: " << Avg(i_arr, I_SIZE)<<endl;
+	cout << "Минимальное значение: " << MinValueIn(i_arr, I_SIZE) << endl;
+	cout << "Максимальное значение: " << MaxValueIn(i_arr, I_SIZE) << endl;
+	cout << delimiter << endl;
 	int number_of_shifts;
 	//cout << "Введите количество сдвигов влево: "; cin >> number_of_shifts;
 	//ShiftLeft(arr, n, number_of_shifts);
@@ -61,14 +71,34 @@ void main()
 	//cout << "Введите количество сдвигов вправо: "; cin >> number_of_shifts;
 	//ShiftRight(arr, n, number_of_shifts);
 	//Print(arr, n);
-	const int SIZE = 8;
-	double brr[SIZE];
-	FillRand(brr, SIZE);
-	Print(brr, SIZE);
-	cout << "Сумма элементов массива: " << Sum(brr, SIZE) << endl;
-	//cout << "Средне-арифметическое элементов массива: " << Avg(brr, SIZE) << endl;
-	//cout << "Минимальное значение в массиве: " << MinValueIn(brr, SIZE) << endl;
-	//cout << "Максимальное значение в массиве: " << MaxValueIn(brr, SIZE) << endl;
+	const int D_SIZE = 8;
+	double d_brr[D_SIZE];
+	FillRand(d_brr, D_SIZE);
+	Print(d_brr, D_SIZE);
+	cout << "Сумма элементов массива: " << Sum(d_brr, D_SIZE) << endl;
+	cout << "Средне-арифметическое элементов массива: " << Avg(d_brr, D_SIZE) << endl;
+	cout << "Минимальное значение в массиве: " << MinValueIn(d_brr, D_SIZE) << endl;
+	cout << "Максимальное значение в массиве: " << MaxValueIn(d_brr, D_SIZE) << endl;
+	cout << delimiter << endl;
+	Sort(d_brr, D_SIZE);
+	Print(d_brr, D_SIZE);
+
+	const int C_SIZE = 11;
+	char c_arr[C_SIZE];
+	FillRand(c_arr, C_SIZE);
+	Print(c_arr, C_SIZE);
+	cout << "Сумма элементов массива: " << Sum(c_arr, C_SIZE) << endl;
+	cout << "Среднее арифмитичесок элементов массива: " << Avg(c_arr, C_SIZE) << endl;
+
+	cout << delimiter << endl;
+
+	const int ROWS = 3;
+	const int COLS = 4;
+	int i_arr_2[ROWS][COLS];
+	FillRand(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
+	cout << "Сумма элементов массива: " << Sum(i_arr_2, ROWS, COLS) << endl;
+	cout << "Среднее-фрифметическое элементов массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
 }
 
 void FillRand(int arr[], const int n)
@@ -89,7 +119,17 @@ void FillRand(char arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % 100;
+		arr[i] = rand();
+	}
+}
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = rand() % 100;
+		}
 	}
 }
 
@@ -114,6 +154,18 @@ void Print(char arr[], const int n)
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << tab;
+	}
+	cout << endl;
+}
+void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+		}
+		cout << endl;
 	}
 	cout << endl;
 }
@@ -182,12 +234,24 @@ double Sum(double arr[], const int n)
 	}
 	return sum;
 }
-char Sum(char arr[], const int n)
+int Sum(char arr[], const int n)
 {
 	int sum = 0;
 	for (int i = 0; i < n; i++)
 	{
 		sum += arr[i];
+	}
+	return sum;
+}
+int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
 	}
 	return sum;
 }
@@ -200,9 +264,13 @@ double Avg(double arr[], const int n)
 {
 	return (double)Sum(arr,n)/n;
 }
-char Avg(char arr[], const int n)
+double Avg(char arr[], const int n)
 {
 	return (char)Sum(arr,n)/n;
+}
+double Avg(int arr[ROWS][COLS],const int ROWS,const int COLS)
+{
+	return (double)Sum(arr, ROWS,COLS)/ROWS/COLS;
 }
 
 int MinValueIn(int arr[], const int n)
