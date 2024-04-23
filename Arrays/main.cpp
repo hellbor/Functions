@@ -6,8 +6,8 @@ using std::endl;
 #define tab "\t"
 #define delimiter "\n-------------------------------------\n"
 
-const int ROWS = 3;
-const int COLS = 4;
+const int ROWS = 10;
+const int COLS = 10;
 
 void FillRand(int arr[], const int n);
 void FillRand(double arr[], const int n);
@@ -116,8 +116,6 @@ void main()
 
 	cout << delimiter << endl;
 
-	const int ROWS = 3;
-	const int COLS = 4;
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
@@ -298,25 +296,32 @@ void Sort(char arr[], const int n)
 
 void Sort(int arr[ROWS][COLS], const int ROWS,const int COLS)
 {
+	int iterations = 0;
+	int exchanges = 0;
 	for (int i = 0; i < ROWS; i++)
 	{
-		for (int j = i-1; j < COLS; j++)
+		for (int j = 0; j < COLS; j++)
 		{
-			for (int k = 0; k < ROWS; k++)
+			for (int k = i; k < ROWS; k++)
 			{
-				for (int l = k-1; l < COLS; l++)
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
 				{
-					if (arr[i][j] < arr[k][l])
+					iterations++;
+					if (arr[i][j] > arr[k][l])
 					{
 						int buffer = arr[i][j];
 						arr[i][j] = arr[k][l];
 						arr[k][l] = buffer;
+						exchanges++;
 					}
 
 				}
 			}
 		}
 	}
+	cout << "Массив отсортирован за " << iterations << " итераций\n";
+	cout << "Обменов элементов: " << exchanges << endl;
+	cout << delimiter << endl;
 }
 void Sort(double arr[ROWS][COLS], const int ROWS,const int COLS)
 {
