@@ -49,8 +49,6 @@ void main()
 
 	cout << delimiter << endl;
 
-	const int ROWS = 3;
-	const int COLS = 4;
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);

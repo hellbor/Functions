@@ -1,3 +1,4 @@
+#include"stdafx.h"
 #include"Sort.h"
 
 void Sort(int arr[], const int n)
@@ -48,25 +49,32 @@ void Sort(char arr[], const int n)
 
 void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
+	int iterations = 0;
+	int exchanges = 0;
 	for (int i = 0; i < ROWS; i++)
 	{
-		for (int j = i - 1; j < COLS; j++)
+		for (int j = 0; j < COLS; j++)
 		{
-			for (int k = 0; k < ROWS; k++)
+			for (int k = i; k < ROWS; k++)
 			{
-				for (int l = k - 1; l < COLS; l++)
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
 				{
-					if (arr[i][j] < arr[k][l])
+					iterations++;
+					if (arr[i][j] > arr[k][l])
 					{
 						int buffer = arr[i][j];
 						arr[i][j] = arr[k][l];
 						arr[k][l] = buffer;
+						exchanges++;
 					}
 
 				}
 			}
 		}
 	}
+	cout << "Массив отсортирован за " << iterations << " итераций\n";
+	cout << "Обменов элементов: " << exchanges << endl;
+	cout << delimiter << endl;
 }
 void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS)
 {
