@@ -1,10 +1,10 @@
 ﻿#include"stdafx.h"
 #include"Constants.h"
-
 #include"FillRand.h"
 #include"Print.h"
 #include"Sort.h"
 #include"Statistics.h"
+
 
 void main()
 {
@@ -67,4 +67,3 @@ void main()
 
 	cout << delimiter << endl;
 }
-

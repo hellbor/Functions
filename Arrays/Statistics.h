@@ -1,4 +1,5 @@
 #pragma once
+
 #include"Constants.h"
 
 int Sum(int arr[], const int n);
@@ -32,4 +33,3 @@ char MaxValueIn(char arr[], const int n);
 int MaxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 double MaxValueIn(double arr[ROWS][COLS], const int ROWS, const int COLS);
 char MaxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
-
