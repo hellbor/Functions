@@ -36,7 +36,7 @@ void main()
 	//Print(arr, n);
 	//cout << "Введите количество сдвигов вправо: "; cin >> number_of_shifts;
 	//ShiftRight(arr, n, number_of_shifts);
-	Print(arr, n);
+	//Print(arr, n);
 	const int D_SIZE = 8;
 	double d_arr[D_SIZE];
 	FillRand(d_arr, D_SIZE);
@@ -49,8 +49,10 @@ void main()
 	Print(d_arr, D_SIZE);
 	cout << "Введите количество сдвигов вправо: "; cin >> number_of_shifts;
 	ShiftRight(d_arr, D_SIZE, number_of_shifts);
+	Print(d_arr, D_SIZE);
 	cout << "Введите количество сдвигов влево: "; cin >> number_of_shifts;
 	ShiftLeft(d_arr, D_SIZE, number_of_shifts);
+	Print(d_arr, D_SIZE);
 }
 
 void FillRand(int arr[], const int n)
