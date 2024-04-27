@@ -1,33 +1,10 @@
-﻿#include<iostream>
-using std::cin;
-using std::cout;
-using std::endl;
+﻿#include"stdafx.h"
+#include"Constants.h"
+#include"FillRand.h"
+#include"Print.h"
+#include"Sort.h"
+#include"Statistics.h"
 
-#define tab "\t"
-#define delimeter "\n------------------------------------------------------------------------\n"
-
-const int ROWS = 10;
-const int COLS = 10;
-
-void FillRand(int c_arr[ROWS][COLS], const int ROWS, const int COLS);
-void FillRand(double c_arr[ROWS][COLS], const int ROWS, const int COLS);
-void FillRand(char c_arr[ROWS][COLS], const int ROWS, const int COLS);
-template<typename T>void Print(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
-template<typename T>void Sort(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
-template<typename T>T Sum(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
-template<typename T>double Avg(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
-template<typename T>T MinValueIn(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
-template<typename T>T MaxValueIn(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
-
-
-void FillRand(int arr[], const int n);
-void FillRand(double arr[], const int n);
-template<typename T>void Print(T arr[], const int n);
-template<typename T>void Sort(T arr[], const int n);
-template<typename T>T Sum(T arr[], const int n);
-template<typename T>double Avg(T arr[], const int n);
-template<typename T>T MinValueIn(T arr[], const int n);
-template<typename T>T MaxValueIn(T arr[], const int n);
 template<typename T>void ShiftLeft(T arr[], const int n, int number_of_shifts);
 template<typename T>void ShiftRight(T arr[], const int n, int number_of_shifts);
 
@@ -81,36 +58,6 @@ void main()
 	cout << "Максимальное значение в массиве: " << MaxValueIn(c_arr, ROWS, COLS) << endl;
 }
 
-void FillRand(int c_arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			c_arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(double c_arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			c_arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(char c_arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			c_arr[i][j] = rand() % 100;
-		}
-	}
-}
 template<typename T>void Print(T c_arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	for (int i = 0; i < ROWS; i++)
@@ -193,21 +140,6 @@ template<typename T>T MaxValueIn(T c_arr[ROWS][COLS], const int ROWS, const int 
 }
 
 
-void FillRand(int arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = rand() % 100;
-	}
-}
-void FillRand(double arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = rand() % 10000;
-		arr[i] /= 100;
-	}
-}
 template<typename T>void Print(T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
