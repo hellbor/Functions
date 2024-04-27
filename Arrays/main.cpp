@@ -5,8 +5,6 @@
 #include"Sort.h"
 #include"Statistics.h"
 
-template<typename T>void ShiftLeft(T arr[], const int n, int number_of_shifts);
-template<typename T>void ShiftRight(T arr[], const int n, int number_of_shifts);
 
 void main()
 {
@@ -46,7 +44,6 @@ void main()
 	ShiftLeft(d_arr, D_SIZE, number_of_shifts);
 	Print(d_arr, D_SIZE);*/
 
-
 	int c_arr[ROWS][COLS];
 	FillRand(c_arr, ROWS,COLS);
 	Print(c_arr, ROWS,COLS);
@@ -56,21 +53,4 @@ void main()
 	cout << "Сумма элементов массива: " << Sum(c_arr, ROWS, COLS) << endl;
 	cout << "Минимальное значение в массиве: " << MinValueIn(c_arr, ROWS, COLS) << endl;
 	cout << "Максимальное значение в массиве: " << MaxValueIn(c_arr, ROWS, COLS) << endl;
-}
-
-template<typename T>void ShiftLeft(T arr[], const int n, int number_of_shifts)
-{
-	for (int i = 0; i < number_of_shifts; i++)
-	{
-		T buffer = arr[0];
-		for (int i = 1; i < n; i++)
-		{
-			arr[i - 1] = arr[i];
-		}
-		arr[n - 1] = buffer;
-	}
-}
-template<typename T>void ShiftRight(T arr[], const int n, int number_of_shifts)
-{
-	ShiftLeft(arr, n, n - number_of_shifts);
 }
