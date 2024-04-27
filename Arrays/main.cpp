@@ -2,8 +2,13 @@
 #include"Constants.h"
 #include"FillRand.h"
 #include"Print.h"
+#include"Print.cpp"
 #include"Sort.h"
+#include"Sort.cpp"
 #include"Statistics.h"
+#include"Statistics.cpp"
+#include"Shift.h"
+#include"Shift.cpp"
 
 
 void main()
@@ -46,11 +51,17 @@ void main()
 
 	int c_arr[ROWS][COLS];
 	FillRand(c_arr, ROWS,COLS);
-	Print(c_arr, ROWS,COLS);
+	Print(c_arr, ROWS, COLS);
 	Sort(c_arr, ROWS, COLS);
 	Print(c_arr, ROWS, COLS);
 	cout << delimeter << endl;
 	cout << "Сумма элементов массива: " << Sum(c_arr, ROWS, COLS) << endl;
 	cout << "Минимальное значение в массиве: " << MinValueIn(c_arr, ROWS, COLS) << endl;
 	cout << "Максимальное значение в массиве: " << MaxValueIn(c_arr, ROWS, COLS) << endl;
+	//cout << "Введите количество сдвигов вправо: "; cin >> number_of_shifts;
+	//ShiftRight(c_arr, ROWS,COLS, number_of_shifts);
+	//Print(c_arr, ROWS * COLS);
+	//cout << "Введите количество сдвигов влево: "; cin >> number_of_shifts;
+	//ShiftLeft(c_arr, ROWS,COLS, number_of_shifts);
+	//Print(c_arr, ROWS * COLS);
 }
