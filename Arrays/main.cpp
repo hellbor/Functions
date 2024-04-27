@@ -4,10 +4,24 @@ using std::cout;
 using std::endl;
 
 #define tab "\t"
+#define delimeter "\n------------------------------------------------------------------------\n"
+
+const int ROWS = 10;
+const int COLS = 10;
+
+void FillRand(int c_arr[ROWS][COLS], const int ROWS, const int COLS);
+void FillRand(double c_arr[ROWS][COLS], const int ROWS, const int COLS);
+void FillRand(char c_arr[ROWS][COLS], const int ROWS, const int COLS);
+template<typename T>void Print(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
+template<typename T>void Sort(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
+template<typename T>T Sum(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
+template<typename T>double Avg(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
+template<typename T>T MinValueIn(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
+template<typename T>T MaxValueIn(T c_arr[ROWS][COLS], const int ROWS, const int COLS);
+
 
 void FillRand(int arr[], const int n);
 void FillRand(double arr[], const int n);
-
 template<typename T>void Print(T arr[], const int n);
 template<typename T>void Sort(T arr[], const int n);
 template<typename T>T Sum(T arr[], const int n);
@@ -47,13 +61,137 @@ void main()
 	cout << "Максимальное значение в массиве: " << MaxValueIn(d_arr, D_SIZE) << endl;
 	Sort(d_arr, D_SIZE);
 	Print(d_arr, D_SIZE);
-	cout << "Введите количество сдвигов вправо: "; cin >> number_of_shifts;
+	cout << delimeter << endl;
+	/*cout << "Введите количество сдвигов вправо: "; cin >> number_of_shifts;
 	ShiftRight(d_arr, D_SIZE, number_of_shifts);
 	Print(d_arr, D_SIZE);
 	cout << "Введите количество сдвигов влево: "; cin >> number_of_shifts;
 	ShiftLeft(d_arr, D_SIZE, number_of_shifts);
-	Print(d_arr, D_SIZE);
+	Print(d_arr, D_SIZE);*/
+
+
+	int c_arr[ROWS][COLS];
+	FillRand(c_arr, ROWS,COLS);
+	Print(c_arr, ROWS,COLS);
+	Sort(c_arr, ROWS, COLS);
+	Print(c_arr, ROWS, COLS);
+	cout << delimeter << endl;
+	cout << "Сумма элементов массива: " << Sum(c_arr, ROWS, COLS) << endl;
+	cout << "Минимальное значение в массиве: " << MinValueIn(c_arr, ROWS, COLS) << endl;
+	cout << "Максимальное значение в массиве: " << MaxValueIn(c_arr, ROWS, COLS) << endl;
 }
+
+void FillRand(int c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			c_arr[i][j] = rand() % 100;
+		}
+	}
+}
+void FillRand(double c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			c_arr[i][j] = rand() % 100;
+		}
+	}
+}
+void FillRand(char c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			c_arr[i][j] = rand() % 100;
+		}
+	}
+}
+template<typename T>void Print(T c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << c_arr[i][j] << tab;
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+template<typename T>void Sort(T c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int iterations = 0;
+	int exchanges = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = i; k < ROWS; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
+				{
+					iterations++;
+						if (c_arr[i][j] > c_arr[k][l])
+						{
+							T buffer = c_arr[i][j];
+							c_arr[i][j] = c_arr[k][l];
+							c_arr[k][l] = buffer;
+							exchanges++;
+						}
+				}
+			}
+		}
+	}
+	cout << "Массив отсортирован за " << iterations << " итераций\n";
+	cout << "Обменов элементов: " << exchanges << endl;
+	cout << delimeter << endl;
+}
+template<typename T>T Sum(T c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	T sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += c_arr[i][j];
+		}
+	}
+	return sum;
+}
+template<typename T>double Avg(T c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	return(double)Sum(c_arr, ROWS, COLS)/ROWS/COLS;
+}
+template<typename T>T MinValueIn(T c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	T min = c_arr[ROWS][COLS];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (c_arr[i][j] < min)min = c_arr[i][j];
+		}
+		return min;
+	}
+}
+template<typename T>T MaxValueIn(T c_arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	T max = c_arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (c_arr[i][j] > max)max = c_arr[i][j];
+		}
+	}
+	return max;
+}
+
 
 void FillRand(int arr[], const int n)
 {
@@ -70,7 +208,6 @@ void FillRand(double arr[], const int n)
 		arr[i] /= 100;
 	}
 }
-
 template<typename T>void Print(T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
