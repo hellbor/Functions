@@ -169,7 +169,7 @@ template<typename T>double Avg(T c_arr[ROWS][COLS], const int ROWS, const int CO
 }
 template<typename T>T MinValueIn(T c_arr[ROWS][COLS], const int ROWS, const int COLS)
 {
-	T min = c_arr[ROWS][COLS];
+	T min = c_arr[0][0];
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
