@@ -1,5 +1,4 @@
 #pragma once
-
 #include"Constants.h"
 
 template<typename T>T Sum(T c_arr[ROWS][COLS], const int ROWS, const int COLS);

@@ -10,7 +10,6 @@
 #include"Shift.h"
 #include"Shift.cpp"
 
-
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -64,5 +63,4 @@ void main()
 	cout << "Введите количество сдвигов влево: "; cin >> number_of_shifts;
 	ShiftLeft(c_arr, ROWS, COLS, number_of_shifts);
 	Print(c_arr, ROWS, COLS);
-
 }
